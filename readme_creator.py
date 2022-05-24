@@ -20,7 +20,7 @@ def ScrapeProjectInfo(fileName):
         '_Title': 'Your Project Name\n',
         '_Description': 'Project description\n<ul>\n\t<li>Feature 1</li>\n\t<li>Feature 2</li>\n\t<li>Feature 3</li>\n</ul>',
         'Requirements': '<ul>\n\t<li>Python 3.9.4</li>\n\t<li>Example-library 6.2.3</li>\n</ul>',
-        'Installation': '<ol>\n\t<li>\n\t\tInstall required libraries\n\t\t<pre>pip install example-library\npip install next-example-library</pre>\n\t</li>\n\t<li>\n\t\tUnpack rar package\n\t\t<pre>unpack file.rar</pre>\n\t</li>\n</ol>',
+        'Installation': '<ol>\n\t<li>\n\t\tInstall required libraries\n<br>\n\t\t<pre>pip install example-library\npip install next-example-library</pre>\n\t</li>\n\t<li>\n\t\tUnpack rar package\n<br>\n\t\t<pre>unpack file.rar</pre>\n\t</li>\n</ol>',
     }
     with open('README_T.md', 'w') as file:
         file.write(f'# {informations["_Title"]}{informations["_Description"]}\n\n')

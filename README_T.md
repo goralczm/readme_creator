@@ -16,28 +16,29 @@ Project description
 <ol>
 	<li>
 		Install required libraries
+        <br>
 		<pre>pip install example-library
 pip install next-example-library</pre>
 	</li>
 	<li>
 		Unpack rar package
+        <br>
 		<pre>unpack file.rar</pre>
 	</li>
 </ol>
 
 # Functions
 <ul>
-	<li>
-		<b>ScrapeFunctions(fileName)</b> - function description
-		<br>
-		<ul>
-			<li></li>
-		</ul>
-		<br>
-		<pre>ScrapeFunctions(fileName)
+<li>
+<b>ScrapeFunctions(fileName)</b> - function description
+<br>
+<ul>
+<li></li>
+</ul>
+<br>
+<pre>ScrapeFunctions(fileName)
 output</pre>
-	</li>
-
+</li>
 	<li>
 		<b>.*:", line) #EXAMPLE RETURN ['def Multiply(x, y)</b> - function description
 		<br>
@@ -48,7 +49,6 @@ output</pre>
 		<pre>.*:", line) #EXAMPLE RETURN ['def Multiply(x, y)
 output</pre>
 	</li>
-
 	<li>
 		<b>ScrapeProjectInfo(fileName)</b> - function description
 		<br>
@@ -59,5 +59,4 @@ output</pre>
 		<pre>ScrapeProjectInfo(fileName)
 output</pre>
 	</li>
-
 </ul>
