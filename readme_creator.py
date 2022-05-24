@@ -15,18 +15,22 @@ def ScrapeFunctions(fileName):
                 functions[functionClearedStr] = variablesCleared
     return functions
 
-def ScrapeProjectInfo():
+def ScrapeProjectInfo(fileName):
     informations = {
         '_Title': 'Your Project Name\n',
-        '_Description': 'Project description\n<ul>\n<li>Feature 1</li>\n<li>Feature 2</li>\n<li>Feature 3</li>\n</ul>',
-        'Requirements': '<ul>\n<li>example-library</li>\n<li>next-example-library</li>\n</ul>',
-        'Installation': '<ol>\n<li>Install required libraries<pre>pip install example-library\npip install next-example-library</pre></li>\n<li>Unpack rar package<pre>unpack file.rar</pre></li>\n</ol>',
-        'Versions': '<ul>\n<li>Python 3.9.4</li>\n<li>Example-library 6.2.3</li>\n</ul>',
+        '_Description': 'Project description\n<ul>\n\t<li>Feature 1</li>\n\t<li>Feature 2</li>\n\t<li>Feature 3</li>\n</ul>',
+        'Requirements': '<ul>\n\t<li>Python 3.9.4</li>\n\t<li>Example-library 6.2.3</li>\n</ul>',
+        'Installation': '<ol>\n\t<li>\n\t\tInstall required libraries\n\t\t<pre>pip install example-library\npip install next-example-library</pre>\n\t</li>\n\t<li>\n\t\tUnpack rar package\n\t\t<pre>unpack file.rar</pre>\n\t</li>\n</ol>',
     }
     with open('README_T.md', 'w') as file:
         file.write(f'# {informations["_Title"]}{informations["_Description"]}\n\n')
         for header in informations.keys():
             if (not header.startswith('_')):
                 file.write(f'# {header}\n{informations[header]}\n\n')
+        functions = ScrapeFunctions(fileName)
+        file.write('# Functions\n<ul>\n')
+        for function in functions:
+            file.write(f'\t<li>\n\t\t<b>{function}</b> - function description\n\t\t<br>\n\t\t<ul>\n\t\t\t<li></li>\n\t\t</ul>\n\t\t<br>\n\t\t<pre>{function}\noutput</pre>\n\t</li>\n\n')
+        file.write('</ul>')
         
-ScrapeProjectInfo()
+ScrapeProjectInfo('readme_creator.py')
