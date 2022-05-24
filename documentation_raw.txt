@@ -1,0 +1,27 @@
+--- PROJECT TITLE ---
+Documentation Generator
+--- DESCRIPTION ---
+This script will automatically create github README.md file based on your script
+    Create README.md file
+    Create documentation file
+--- REQUIREMENTS ---
+default
+--- INSTALATION ---
+    <pytohn -V>
+    <pip --v>
+    <get sudo run stream>
+--- VERSIONS ---
+    Python 10.18
+    React 6.2
+--- FUNCTIONS ---
+SystemToDecimal(number, system) - function converts number in given system to SystemToDecimal
+    number - string
+    system - integer
+    <some example code>
+    <another example code
+br
+SystemToDecimal(number, system) - function converts number in given system to SystemToDecimal
+    number - string
+    system - integer
+    <some example code>
+    <another example code
