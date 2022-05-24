@@ -13,9 +13,9 @@ default
 
 # Instalation
 <ul>
-<li><pytohn -V!</li>
-<li><pip --v!</li>
-<li><get sudo run stream!</li>
+<li>pytohn -V</li>
+<li>pip --v</li>
+<li>get sudo run stream</li>
 </ul>
 
 # Versions

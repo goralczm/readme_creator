@@ -37,8 +37,8 @@ def ScrapeProjectInfo():
                     readme.write(f'# {currentHeader}\n')
                 else:
                     if (line.startswith('   ')):
-                        #line = re.sub('<', '<pre>', line)
-                        #line = re.sub('!', '</pre>', line)
+                        line = re.sub('<', '', line)
+                        line = re.sub('!', '', line)
                         currentBulletList.append(line.strip())
                     else:
                         readme.write(f'{line.strip()}\n')
