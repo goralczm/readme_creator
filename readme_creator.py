@@ -23,7 +23,7 @@ def ScrapeProjectInfo():
         'Installation': '<ul>\n<li>Install required libraries</li>\n<li>Unpack rar</li>\n</ul>',
         'Versions': '<ul>\n<li>Python 3.9.4</li>\n<li>Example-library 6.2.3</li>\n</ul>',
     }
-    with open('documentation_raw.txt', 'w') as file:
+    with open('README_T.md', 'w') as file:
         file.write(f'# {informations["_Title"]}{informations["_Description"]}\n\n')
         for header in informations.keys():
             if (not header.startswith('_')):
