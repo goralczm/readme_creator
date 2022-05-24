@@ -16,13 +16,19 @@ def ScrapeFunctions(fileName):
     return functions
 
 def ScrapeProjectInfo(fileName):
+    try:
+        f = open(fileName)
+    except:
+        return False
+    else:
+        f.close()
     informations = {
         '_Title': 'Your Project Name\n',
         '_Description': 'Project description\n<ul>\n\t<li>Feature 1</li>\n\t<li>Feature 2</li>\n\t<li>Feature 3</li>\n</ul>',
         'Requirements': '<ul>\n\t<li>Python 3.9.4</li>\n\t<li>Example-library 6.2.3</li>\n</ul>',
-        'Installation': '<ol>\n\t<li>\n\t\tInstall required libraries\n<br>\n\t\t<pre>pip install example-library\npip install next-example-library</pre>\n\t</li>\n\t<li>\n\t\tUnpack rar package\n<br>\n\t\t<pre>unpack file.rar</pre>\n\t</li>\n</ol>',
+        'Installation': '<ol>\n\t<li>\n\t\tInstall required libraries\n\t\t<br>\n\t\t<pre>pip install example-library<br>pip install next-example-library</pre>\n\t</li>\n\t<li>\n\t\tUnpack rar package\n\t\t<br>\n\t\t<pre>unpack file.rar</pre>\n\t</li>\n</ol>',
     }
-    with open('README_T.md', 'w') as file:
+    with open('README.md', 'w') as file:
         file.write(f'# {informations["_Title"]}{informations["_Description"]}\n\n')
         for header in informations.keys():
             if (not header.startswith('_')):
@@ -30,7 +36,12 @@ def ScrapeProjectInfo(fileName):
         functions = ScrapeFunctions(fileName)
         file.write('# Functions\n<ul>\n')
         for function in functions:
-            file.write(f'\t<li>\n\t\t<b>{function}</b> - function description\n\t\t<br>\n\t\t<ul>\n\t\t\t<li></li>\n\t\t</ul>\n\t\t<br>\n\t\t<pre>{function}\noutput</pre>\n\t</li>\n\n')
+            file.write(f'\t<li>\n\t\t<b>{function}</b> - function description\n\t\t<br>\n\t\t<ul>\n')
+            for variable in functions[function]:
+                file.write(f'\t\t\t<li>{variable} - </li>\n')
+            file.write(f'\t\t</ul>\n\t\t<br>\n\t\t<pre>{function}<br>output</pre>\n\t</li>\n\n')
         file.write('</ul>')
+    return True
         
-ScrapeProjectInfo('readme_creator.py')
+fileToAnalyse = input('What is name of the script?: ')
+ScrapeProjectInfo(fileToAnalyse)
