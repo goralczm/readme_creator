@@ -18,15 +18,23 @@ def ScrapeFunctions(fileName):
 def ScrapeProjectInfo():
     projectInfos = {}
     with open('documentation_raw.txt', 'r') as file:
-        content = file.readlines()
-        currentHeader = '' 
-        for line in content:
-            if (line.startswith('---')):
-                currentHeader = line.strip()[4:-4].capitalize() #cleaned '---' and capitalized strings
-                projectInfos[currentHeader] = []
-            else:
-                if (line.startswith('/t')):
-                    print(line)
+        with open('README_T.md', 'w') as readme:
+            content = file.readlines()
+            currentHeader = '' 
+            for line in content:
+                if (line.startswith('---')):
+                    if (currentHeader != ''):
+                        readme.write('\n')
+                    currentHeader = line.strip()[4:-4].capitalize() #cleaned '---' and capitalized strings
+                    projectInfos[currentHeader] = []
+                    readme.write(f'# {currentHeader}\n')
+                else:
+                    if (line.startswith('   ')):
+                        line = re.sub('<', '<pre>', line)
+                        line = re.sub('!', '</pre>', line)
+                        readme.write(f'\t<li>{line.strip()}</li>\n')
+                    else:
+                        readme.write(f'{line.strip()}\n')
     return projectInfos
 
 print(ScrapeProjectInfo())
