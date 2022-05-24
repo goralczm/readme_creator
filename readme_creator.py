@@ -15,11 +15,28 @@ def ScrapeFunctions(fileName):
                 functions[functionClearedStr] = variablesCleared
     return functions
 
+def ScrapeProjectInfo():
+    projectInfos = {}
+    with open('documentation_raw.txt', 'r') as file:
+        content = file.readlines()
+        currentHeader = '' 
+        for line in content:
+            if (line.startswith('---')):
+                currentHeader = line.strip()[4:-4].capitalize() #cleaned '---' and capitalized strings
+                projectInfos[currentHeader] = []
+            else:
+                if (line.startswith('/t')):
+                    print(line)
+    return projectInfos
+
+print(ScrapeProjectInfo())
+exit()
+
 informations = { #Key names starting with '_' are automatically set
     'Title': '',
     'BulletDescription': '',
-    'Requirments': '',
-    'Installation': '',
+    'Requirements': '',
+    'InstallationSteps': '',
     'PythonVersion': '',
     '_Functions': {},
 }
