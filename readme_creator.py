@@ -16,50 +16,17 @@ def ScrapeFunctions(fileName):
     return functions
 
 def ScrapeProjectInfo():
-    projectInfos = {}
-    with open('documentation_raw.txt', 'r') as file:
-        with open('README_T.md', 'w') as readme:
-            content = file.readlines()
-            currentHeader = ''
-            currentBulletList = []
-            for line in content:
-                if (line.startswith('---')):
-                    if (len(currentBulletList) > 0):
-                        readme.write('<ul>\n')
-                        for listElement in currentBulletList:
-                            readme.write(f'<li>{listElement}</li>\n')
-                        readme.write('</ul>\n')
-                        currentBulletList.clear()
-                    if (currentHeader != ''):
-                        readme.write('\n')
-                    currentHeader = line.strip()[4:-4].capitalize() #cleaned '---' and capitalized strings
-                    projectInfos[currentHeader] = []
-                    readme.write(f'# {currentHeader}\n')
-                else:
-                    if (line.startswith('   ')):
-                        line = re.sub('<', '', line)
-                        line = re.sub('!', '', line)
-                        currentBulletList.append(line.strip())
-                    else:
-                        line = re.sub('br', '<br>', line)
-                        readme.write(f'{line.strip()}\n')
-    return projectInfos
-
-print(ScrapeProjectInfo())
-exit()
-
-informations = { #Key names starting with '_' are automatically set
-    'Title': '',
-    'BulletDescription': '',
-    'Requirements': '',
-    'InstallationSteps': '',
-    'PythonVersion': '',
-    '_Functions': {},
-}
-
-scriptName = input("What's the name of script to scrape functions from? ")
-informations['_Functions'] = ScrapeFunctions(scriptName)
-
-for info in informations.keys():
-    if ('_' not in info):
-        informations[info] = input(f'{info}: ')
+    informations = {
+        '_Title': 'Your Project Name\n',
+        '_Description': 'Project description\n<ul>\n<li>Feature 1</li>\n<li>Feature 2</li>\n<li>Feature 3</li>\n</ul>',
+        'Requirements': '<pre>pip install example-library\npip install example-library</pre>',
+        'Installation': '<ul>\n<li>Install required libraries</li>\n<li>Unpack rar</li>\n</ul>',
+        'Versions': '<ul>\n<li>Python 3.9.4</li>\n<li>Example-library 6.2.3</li>\n</ul>',
+    }
+    with open('documentation_raw.txt', 'w') as file:
+        file.write(f'# {informations["_Title"]}{informations["_Description"]}\n\n')
+        for header in informations.keys():
+            if (not header.startswith('_')):
+                file.write(f'# {header}\n{informations[header]}\n\n')
+        
+ScrapeProjectInfo()
