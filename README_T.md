@@ -26,5 +26,5 @@ default
 
 # Functions
 SystemToDecimal(number, system) - function converts number in given system to SystemToDecimal
-br
+<br>
 SystemToDecimal(number, system) - function converts number in given system to SystemToDecimal

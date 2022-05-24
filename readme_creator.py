@@ -41,6 +41,7 @@ def ScrapeProjectInfo():
                         line = re.sub('!', '', line)
                         currentBulletList.append(line.strip())
                     else:
+                        line = re.sub('br', '<br>', line)
                         readme.write(f'{line.strip()}\n')
     return projectInfos
 
