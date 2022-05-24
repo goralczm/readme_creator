@@ -19,8 +19,8 @@ def ScrapeProjectInfo():
     informations = {
         '_Title': 'Your Project Name\n',
         '_Description': 'Project description\n<ul>\n<li>Feature 1</li>\n<li>Feature 2</li>\n<li>Feature 3</li>\n</ul>',
-        'Requirements': '<pre>pip install example-library\npip install example-library</pre>',
-        'Installation': '<ul>\n<li>Install required libraries</li>\n<li>Unpack rar</li>\n</ul>',
+        'Requirements': '<ul>\n<li>example-library</li>\n<li>next-example-library</li>\n</ul>',
+        'Installation': '<ol>\n<li>Install required libraries<pre>pip install example-library\npip install next-example-library</pre></li>\n<li>Unpack rar package<pre>unpack file.rar</pre></li>\n</ol>',
         'Versions': '<ul>\n<li>Python 3.9.4</li>\n<li>Example-library 6.2.3</li>\n</ul>',
     }
     with open('README_T.md', 'w') as file:

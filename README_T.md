@@ -7,14 +7,17 @@ Project description
 </ul>
 
 # Requirements
-<pre>pip install example-library
-pip install example-library</pre>
+<ul>
+<li>example-library</li>
+<li>next-example-library</li>
+</ul>
 
 # Installation
-<ul>
-<li>Install required libraries</li>
-<li>Unpack rar</li>
-</ul>
+<ol>
+<li>Install required libraries<pre>pip install example-library
+pip install next-example-library</pre></li>
+<li>Unpack rar package<pre>unpack file.rar</pre></li>
+</ol>
 
 # Versions
 <ul>
