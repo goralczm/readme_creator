@@ -20,9 +20,16 @@ def ScrapeProjectInfo():
     with open('documentation_raw.txt', 'r') as file:
         with open('README_T.md', 'w') as readme:
             content = file.readlines()
-            currentHeader = '' 
+            currentHeader = ''
+            currentBulletList = []
             for line in content:
                 if (line.startswith('---')):
+                    if (len(currentBulletList) > 0):
+                        readme.write('<ul>\n')
+                        for listElement in currentBulletList:
+                            readme.write(f'<li>{listElement}</li>\n')
+                        readme.write('</ul>\n')
+                        currentBulletList.clear()
                     if (currentHeader != ''):
                         readme.write('\n')
                     currentHeader = line.strip()[4:-4].capitalize() #cleaned '---' and capitalized strings
@@ -30,9 +37,9 @@ def ScrapeProjectInfo():
                     readme.write(f'# {currentHeader}\n')
                 else:
                     if (line.startswith('   ')):
-                        line = re.sub('<', '<pre>', line)
-                        line = re.sub('!', '</pre>', line)
-                        readme.write(f'\t<li>{line.strip()}</li>\n')
+                        #line = re.sub('<', '<pre>', line)
+                        #line = re.sub('!', '</pre>', line)
+                        currentBulletList.append(line.strip())
                     else:
                         readme.write(f'{line.strip()}\n')
     return projectInfos
